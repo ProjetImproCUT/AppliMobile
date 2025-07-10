@@ -23,5 +23,5 @@ Nous viserons un MVVM moderne : ViewModel + StateFlow, Jetpack Compose UI, Hilt 
 
 ## Installation développeur
 ```bash
-git clone https://github.com/ProjetImproCUT/ProjetIntegrateurCUT-AppliMobile
+git clone https://github.com/ProjetImproCUT/AppliMobile
 ./gradlew assembleDebug
