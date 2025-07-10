@@ -1,4 +1,4 @@
-# 📱 Application mobile – Projet Intégrateur CUT
+# 📱 Application mobile
 > Kotlin • Android • WebSockets • MIT
 
 ## Présentation
