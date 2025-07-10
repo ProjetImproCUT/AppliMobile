@@ -1,7 +1,7 @@
 # 📱 Application mobile – Projet Intégrateur CUT
 > Kotlin • Android • WebSockets • MIT
 
-## 🇫🇷 Présentation
+## Présentation
 Cette application Android permet aux spectateurs de suivre en temps réel les matchs, les équipes et les statistiques de notre projet intégrateur CUT.
 
 | Clé | Valeur |
