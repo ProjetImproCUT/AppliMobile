@@ -8,7 +8,7 @@ Cette application Android permet aux spectateurs de suivre en temps réel les ma
 |-----|--------|
 | **Langage** | Kotlin |
 | **minSdk / targetSdk** | 24 / 35 *(suggestion pour couvrir ≈ 93 % des appareils actifs en 2025 tout en profitant des dernières API)* |
-| **Communication** | WebSockets (Socket.IO / OkHttp) |
+| **Communication** | WebSockets (Socket.IO / OkHttp / Retrofit/ Azure App Services) |
 | **Licence** | MIT |
 | **Auteurs** | Damien C., Christoph M., Gabriel H., Gabriel B., Johan M. L., Moad L. |
 
