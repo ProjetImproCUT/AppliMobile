@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ImproGoAppMobile</string>
+
+    <!-- Pour ChoixEtoileEquipe -->
+    <string name="str_CEE_1">Quelle équipe avez-vous préféré ?</string>
+
+    <!-- Pour Attente -->
+    <string name="str_Attente_1">Veuillez patienter</string>
+    <string name="str_Attente_2">Vous pouvez profiter pour regarder la scène.</string>
+</resources>
