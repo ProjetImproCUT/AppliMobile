@@ -1,5 +1,6 @@
 package com.example.improgoappmobile;
 
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class ChoixEtoileEquipeActivity extends AppCompatActivity {
+public class ChoixVoteEquipeActivity extends AppCompatActivity {
 
     private View view;
     private ImageButton btnEquipe1;
@@ -22,7 +23,11 @@ public class ChoixEtoileEquipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_choix_etoile_equipe);
+        setContentView(R.layout.activity_choix_vote_equipe);
+
+        Intent intent = getIntent();
+        int jouteRendu = intent.getIntExtra("jouteRendu", 0);
+        int numeroMatch = intent.getIntExtra("numeroMatch", 0);
 
         view = findViewById(R.id.CEE_page);
 
@@ -35,9 +40,15 @@ public class ChoixEtoileEquipeActivity extends AppCompatActivity {
 
         btnEquipe1 = findViewById(R.id.b_equ1);
         btnEquipe1.setImageResource(R.drawable.logojaune);
+        btnEquipe1.setOnClickListener((view) -> {
+            //
+        });
 
         btnEquipe2 = findViewById(R.id.b_equ2);
         btnEquipe2.setImageResource(R.drawable.logobleu);
+        btnEquipe2.setOnClickListener((view) -> {
+            //
+        });
 
         setBackgroundOfImageButton("FFDE59", "0CC0DF");
 

@@ -5,7 +5,7 @@
     android:id="@+id/CEE_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChoixEtoileEquipeActivity">
+    tools:context=".ChoixVoteEquipeActivity">
 
     <ImageButton
         android:id="@+id/b_equ1"

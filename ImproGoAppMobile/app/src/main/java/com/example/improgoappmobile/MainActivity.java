@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.button);
         btn.setOnClickListener((event) -> {
-            Intent intent = new Intent(this, ChoixEtoileEquipeActivity.class);
+            Intent intent = new Intent(this, AttenteActivity.class);
             startActivity(intent);
         });
 
