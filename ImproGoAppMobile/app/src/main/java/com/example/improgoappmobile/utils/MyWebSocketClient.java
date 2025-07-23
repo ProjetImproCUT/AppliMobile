@@ -1,4 +1,4 @@
-package com.example.improgoappmobile;
+package com.example.improgoappmobile.utils;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;

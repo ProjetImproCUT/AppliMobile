@@ -9,6 +9,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.improgoappmobile.utils.InfoServeur;
+import com.example.improgoappmobile.utils.MyWebSocketClient;
 import com.google.gson.Gson;
 
 import java.net.URI;

@@ -1,4 +1,4 @@
-package com.example.improgoappmobile;
+package com.example.improgoappmobile.utils;
 
 public class InfoServeur {
 
