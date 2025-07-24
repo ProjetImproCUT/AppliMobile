@@ -13,17 +13,26 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.improgoappmobile.utils.Donnee;
+import com.example.improgoappmobile.utils.MyWebSocketClient;
+
 public class ChoixVoteEquipeActivity extends AppCompatActivity {
 
     private View view;
     private ImageButton btnEquipe1;
     private ImageButton btnEquipe2;
 
+    private Donnee donnee;
+    private MyWebSocketClient client;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_choix_vote_equipe);
+
+        donnee = Donnee.getInstance();
+        client = donnee.getConnexionWebSocket();
 
         Intent intent = getIntent();
         int jouteRendu = intent.getIntExtra("jouteRendu", 0);
@@ -36,21 +45,31 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         // vert : 7FD858   mauve : CB6CE4
 
         // Fait le dégradé dans le fond du View
-        createGradientBackground("FFDE59", "0CC0DF");
+        createGradientBackground();
+
+        Intent intentVersAttente = new Intent(this, AttenteActivity.class);
 
         btnEquipe1 = findViewById(R.id.b_equ1);
         btnEquipe1.setImageResource(R.drawable.logojaune);
         btnEquipe1.setOnClickListener((view) -> {
-            //
+            // Envoyer les infos du vote
+            startActivity(intentVersAttente);
         });
 
         btnEquipe2 = findViewById(R.id.b_equ2);
         btnEquipe2.setImageResource(R.drawable.logobleu);
         btnEquipe2.setOnClickListener((view) -> {
-            //
+            // Envoyer les infos du vote
+            startActivity(intentVersAttente);
         });
 
-        setBackgroundOfImageButton("FFDE59", "0CC0DF");
+        setBackgroundOfImageButton();
+
+        client.setMessageListener((message) -> {
+            if (message.equals("finVote")) {
+                startActivity(intentVersAttente);
+            }
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.CEE_page), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -59,13 +78,13 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         });
     }
 
-    private void createGradientBackground(String colorTeam1, String colorTeam2) {
+    private void createGradientBackground() {
 
         try {
 
             int[] colors = new int[2];
-            colors[0] = Integer.parseUnsignedInt("FF" + colorTeam2, 16);
-            colors[1] = Integer.parseUnsignedInt("FF" + colorTeam1, 16);
+            colors[0] = Integer.parseUnsignedInt("FF" + donnee.getCouleurEqu2(), 16);
+            colors[1] = Integer.parseUnsignedInt("FF" + donnee.getCouleurEqu1(), 16);
 
             GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
                     colors);
@@ -78,12 +97,12 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
 
     }
 
-    private void setBackgroundOfImageButton(String colorTeam1, String colorTeam2) {
+    private void setBackgroundOfImageButton() {
 
         try {
 
-            int color1 = Integer.parseUnsignedInt("3F" + colorTeam1, 16);
-            int color2 = Integer.parseUnsignedInt("3F" + colorTeam2, 16);
+            int color1 = Integer.parseUnsignedInt("3F" + donnee.getCouleurEqu1(), 16);
+            int color2 = Integer.parseUnsignedInt("3F" + donnee.getCouleurEqu2(), 16);
 
             btnEquipe1.setBackgroundColor(color1);
             btnEquipe2.setBackgroundColor(color2);

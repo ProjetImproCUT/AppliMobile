@@ -9,15 +9,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.improgoappmobile.utils.Donnee;
 import com.example.improgoappmobile.utils.InfoServeur;
 import com.example.improgoappmobile.utils.MyWebSocketClient;
 import com.google.gson.Gson;
 
-import java.net.URI;
-
 public class AttenteActivity extends AppCompatActivity {
-
-    private MyWebSocketClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +24,11 @@ public class AttenteActivity extends AppCompatActivity {
 
         try {
 
-            URI uri = new URI("ws://10.192.170.150:8082"); // <- adresse IP Serveur WebSocket
-            client = new MyWebSocketClient(uri);
+            Donnee instance = Donnee.getInstance();
+            MyWebSocketClient client = instance.getConnexionWebSocket();
+
+            //URI uri = new URI("ws://10.192.170.150:8082");
+            //client = new MyWebSocketClient(uri);
             client.setMessageListener((message) -> {
 
                 Gson gson = new Gson();
@@ -51,7 +51,6 @@ public class AttenteActivity extends AppCompatActivity {
 
             });
 
-            client.connect();
         } catch (Exception e) {
             e.printStackTrace();
         }
