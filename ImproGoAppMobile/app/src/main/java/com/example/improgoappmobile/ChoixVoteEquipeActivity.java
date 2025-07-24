@@ -62,14 +62,14 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         btnEquipe1 = findViewById(R.id.b_equ1);
         btnEquipe1.setImageResource(R.drawable.logojaune);
         btnEquipe1.setOnClickListener((view) -> {
-            envoyerVote(numeroMatch, jouteRendu, "team A");
+            envoyerVote(numeroMatch, jouteRendu, "Team A");
             startActivity(intentVersAttente);
         });
 
         btnEquipe2 = findViewById(R.id.b_equ2);
         btnEquipe2.setImageResource(R.drawable.logobleu);
         btnEquipe2.setOnClickListener((view) -> {
-            envoyerVote(numeroMatch, jouteRendu, "team B");
+            envoyerVote(numeroMatch, jouteRendu, "Team B");
             startActivity(intentVersAttente);
         });
 
