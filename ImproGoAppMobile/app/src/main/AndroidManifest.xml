@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ImproGoAppMobile"
         tools:targetApi="31">
         <activity
+            android:name=".ConnexionSalleActivity"
+            android:exported="false" />
+        <activity
             android:name=".AttenteActivity"
             android:exported="false" />
         <activity
