@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +14,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.improgoappmobile.utils.ApiService;
 import com.example.improgoappmobile.utils.Donnee;
 import com.example.improgoappmobile.utils.MyWebSocketClient;
+import com.example.improgoappmobile.utils.VoteRequest;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ChoixVoteEquipeActivity extends AppCompatActivity {
 
@@ -52,14 +62,14 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         btnEquipe1 = findViewById(R.id.b_equ1);
         btnEquipe1.setImageResource(R.drawable.logojaune);
         btnEquipe1.setOnClickListener((view) -> {
-            // Envoyer les infos du vote
+            envoyerVote(numeroMatch, jouteRendu, "team A");
             startActivity(intentVersAttente);
         });
 
         btnEquipe2 = findViewById(R.id.b_equ2);
         btnEquipe2.setImageResource(R.drawable.logobleu);
         btnEquipe2.setOnClickListener((view) -> {
-            // Envoyer les infos du vote
+            envoyerVote(numeroMatch, jouteRendu, "team B");
             startActivity(intentVersAttente);
         });
 
@@ -111,5 +121,34 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
             Log.i("Erreur", "Les couleurs pour les équipes n'ont pas fonctionné.");
         }
 
+    }
+
+    private void envoyerVote(int matchId, int jouteId, String equipe) {
+
+        VoteRequest vote = new VoteRequest(matchId, jouteId, equipe);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://voteimpro-afg6c3atf4a6cwcr.canadacentral-01.azurewebsites.net/") // ← adapte l’URL
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiService api = retrofit.create(ApiService.class);
+        Call<ResponseBody> call = api.enregistrerVote(vote);
+
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(ChoixVoteEquipeActivity.this, "Vote enregistré!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ChoixVoteEquipeActivity.this, "Erreur côté serveur", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(ChoixVoteEquipeActivity.this, "Erreur de connexion", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
