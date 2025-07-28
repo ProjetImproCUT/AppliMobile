@@ -23,8 +23,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ChoixVoteEquipeActivity extends AppCompatActivity {
 
@@ -127,12 +125,7 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
 
         VoteRequest vote = new VoteRequest(matchId, jouteId, equipe);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://voteimpro-afg6c3atf4a6cwcr.canadacentral-01.azurewebsites.net/") // ← adapte l’URL
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ApiService api = retrofit.create(ApiService.class);
+        ApiService api = donnee.getApi();
         Call<ResponseBody> call = api.enregistrerVote(vote);
 
         call.enqueue(new Callback<>() {

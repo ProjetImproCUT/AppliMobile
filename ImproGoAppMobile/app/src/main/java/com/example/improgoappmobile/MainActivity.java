@@ -12,7 +12,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn;
+    private Button bCalendrier;
+    private Button bParticiper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +21,15 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        btn = findViewById(R.id.b_calendrier);
-        btn.setOnClickListener((event) -> {
-            Intent intent = new Intent(this, AttenteActivity.class);
+        bCalendrier = findViewById(R.id.b_calendrier);
+        bCalendrier.setOnClickListener((event) -> {
+            /*Intent intent = new Intent(this, AttenteActivity.class);
+            startActivity(intent);*/
+        });
+
+        bParticiper = findViewById(R.id.b_participer);
+        bParticiper.setOnClickListener((event) -> {
+            Intent intent = new Intent(this, ConnexionSalleActivity.class);
             startActivity(intent);
         });
 

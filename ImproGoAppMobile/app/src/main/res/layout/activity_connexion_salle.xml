@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ED1A1A1A"
     tools:context=".ConnexionSalleActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -19,6 +20,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:importantForAccessibility="no"
+        android:rotation="-10"
         android:scaleType="centerInside"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +52,8 @@
         android:importantForAutofill="no"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#969696"
         app:layout_constraintBottom_toTopOf="@+id/s_pin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -66,8 +69,9 @@
         android:importantForAutofill="no"
         android:inputType="number"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A"
-        app:layout_constraintBottom_toTopOf="@+id/s_addIp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#969696"
+        app:layout_constraintBottom_toTopOf="@+id/s_addIp_port"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,47 +79,34 @@
         tools:ignore="TextFields" />
 
     <EditText
-        android:id="@+id/s_addIp"
+        android:id="@+id/s_addIp_port"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/str_CS_ph_adIp"
+        android:hint="@string/str_CS_ph_adIp_port"
         android:importantForAutofill="no"
-        android:inputType="number"
+        android:inputType="text"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A"
-        app:layout_constraintBottom_toTopOf="@+id/s_port"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#969696"
+        app:layout_constraintBottom_toTopOf="@+id/b_confirmer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/s_pin" />
 
-    <EditText
-        android:id="@+id/s_port"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/str_CS_ph_port"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:textColorHint="#546E7A"
-        app:layout_constraintBottom_toTopOf="@+id/b_confirmer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/s_addIp" />
-
     <Button
         android:id="@+id/b_confirmer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#DF2935"
+        android:backgroundTint="#F7D09103"
         android:text="@string/str_CS_bConfirmer"
+        android:textColor="#0F0202"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/s_port" />
+        app:layout_constraintTop_toBottomOf="@+id/s_addIp_port" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
