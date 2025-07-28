@@ -3,26 +3,28 @@ package com.example.improgoappmobile.utils;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public final class Donnee {
 
     private static Donnee instance = null;
 
     private MyWebSocketClient connexionWebSocket;
+    private ApiService api;
     private String utilisateur;
     private String pin;
-    private String couleurEqu1;
-    private String couleurEqu2;
-    // lien image équipe 1 ?
-    // lien image équipe 2 ?
+    private InfoEquipe[] equipes;
 
     private Donnee(String utilisateur, String adresseIP, String port, String pin) throws URISyntaxException {
         this.utilisateur = utilisateur;
         this.pin = pin;
-        couleurEqu1 = "";
-        couleurEqu2 = "";
+        equipes = new InfoEquipe[2];
         connexionWebSocket = new MyWebSocketClient(new URI("ws://" + adresseIP + ":" + port));
                                                                 // ^- adresse IP Serveur WebSocket
         connexionWebSocket.connect();
+
+        initialiserAPIService();
     }
 
     public static void setInstance(String utilisateur, String adresseIP, String port, String pin)
@@ -43,11 +45,17 @@ public final class Donnee {
         instance = null;
     }
 
-    public void setCouleurEquipe(String couleurEqu1, String couleurEqu2) {
-        if (couleurEqu1.isEmpty() && couleurEqu2.isEmpty()) {
-            this.couleurEqu1 = couleurEqu1;
-            this.couleurEqu2 = couleurEqu2;
+    public void ajouterEquipe(String nom, String couleur, String lienLogo) {
+        for (int i = 0; i < equipes.length; i++) {
+            if (equipes[i] == null) {
+                equipes[i] = new InfoEquipe(nom, couleur, lienLogo);
+                break;
+            }
         }
+    }
+
+    public ApiService getApi() {
+        return api;
     }
 
     public MyWebSocketClient getConnexionWebSocket() {
@@ -62,12 +70,21 @@ public final class Donnee {
         return pin;
     }
 
-    public String getCouleurEqu1() {
-        return couleurEqu1;
+    public InfoEquipe getEquipe1() {
+        return equipes[0];
     }
 
-    public String getCouleurEqu2() {
-        return couleurEqu2;
+    public InfoEquipe getEquipe2() {
+        return equipes[1];
+    }
+
+    private void initialiserAPIService() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://voteimpro-afg6c3atf4a6cwcr.canadacentral-01.azurewebsites.net/") // ← adapte l’URL
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        api = retrofit.create(ApiService.class);
     }
 
 }

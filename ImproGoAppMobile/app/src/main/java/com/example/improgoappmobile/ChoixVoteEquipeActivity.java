@@ -62,14 +62,14 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         btnEquipe1 = findViewById(R.id.b_equ1);
         btnEquipe1.setImageResource(R.drawable.logojaune);
         btnEquipe1.setOnClickListener((view) -> {
-            envoyerVote(numeroMatch, jouteRendu, "Team A");
+            envoyerVote(numeroMatch, jouteRendu, donnee.getEquipe1().getNom());
             startActivity(intentVersAttente);
         });
 
         btnEquipe2 = findViewById(R.id.b_equ2);
         btnEquipe2.setImageResource(R.drawable.logobleu);
         btnEquipe2.setOnClickListener((view) -> {
-            envoyerVote(numeroMatch, jouteRendu, "Team B");
+            envoyerVote(numeroMatch, jouteRendu, donnee.getEquipe2().getNom());
             startActivity(intentVersAttente);
         });
 
@@ -93,8 +93,8 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         try {
 
             int[] colors = new int[2];
-            colors[0] = Integer.parseUnsignedInt("FF" + donnee.getCouleurEqu2(), 16);
-            colors[1] = Integer.parseUnsignedInt("FF" + donnee.getCouleurEqu1(), 16);
+            colors[0] = Integer.parseUnsignedInt("FF" + donnee.getEquipe2().getCouleur(), 16);
+            colors[1] = Integer.parseUnsignedInt("FF" + donnee.getEquipe1().getCouleur(), 16);
 
             GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
                     colors);
@@ -111,8 +111,8 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
 
         try {
 
-            int color1 = Integer.parseUnsignedInt("3F" + donnee.getCouleurEqu1(), 16);
-            int color2 = Integer.parseUnsignedInt("3F" + donnee.getCouleurEqu2(), 16);
+            int color1 = Integer.parseUnsignedInt("3F" + donnee.getEquipe1().getCouleur(), 16);
+            int color2 = Integer.parseUnsignedInt("3F" + donnee.getEquipe2().getCouleur(), 16);
 
             btnEquipe1.setBackgroundColor(color1);
             btnEquipe2.setBackgroundColor(color2);
