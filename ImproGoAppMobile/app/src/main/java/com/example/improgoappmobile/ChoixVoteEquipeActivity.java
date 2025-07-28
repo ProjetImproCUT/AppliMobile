@@ -18,6 +18,11 @@ import com.example.improgoappmobile.utils.ApiService;
 import com.example.improgoappmobile.utils.Donnee;
 import com.example.improgoappmobile.utils.MyWebSocketClient;
 import com.example.improgoappmobile.utils.VoteRequest;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -74,9 +79,18 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         setBackgroundOfImageButton();
 
         client.setMessageListener((message) -> {
-            if (message.equals("finVote")) {
-                startActivity(intentVersAttente);
+
+            Gson gson = new Gson();
+            Type type = new TypeToken<Map<String, String>>() {}.getType();
+            Map<String, String> map = gson.fromJson(message, type);
+
+            String commande = map.get("commande");
+            if (commande != null) {
+                if (commande.equals("finVote")) {
+                    startActivity(intentVersAttente);
+                }
             }
+
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.CEE_page), (v, insets) -> {

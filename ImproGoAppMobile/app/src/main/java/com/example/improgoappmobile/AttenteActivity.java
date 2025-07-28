@@ -10,9 +10,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.improgoappmobile.utils.Donnee;
-import com.example.improgoappmobile.utils.InfoServeur;
 import com.example.improgoappmobile.utils.MyWebSocketClient;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.Map;
 
 public class AttenteActivity extends AppCompatActivity {
 
@@ -32,21 +35,24 @@ public class AttenteActivity extends AppCompatActivity {
             client.setMessageListener((message) -> {
 
                 Gson gson = new Gson();
-                InfoServeur infoServeur = gson.fromJson(message, InfoServeur.class);
+                Type type = new TypeToken<Map<String, String>>() {}.getType();
+                Map<String, String> map = gson.fromJson(message, type);
 
-                String commande = infoServeur.getCommande();
-                int jouteRendu = infoServeur.getJouteRendu();
-                int numeroMatch = infoServeur.getNumeroMatch();
+                String commande = map.get("commande");
+                if (commande != null) {
+                    if (commande.equals("demandeAuVote")) {
 
-                if (commande.equals("demandeAuVote")) {
+                        String jouteRendu = map.get("jouteRendu");
+                        String numeroMatch = map.get("numeroMatch");
 
-                    Intent intent = new Intent(this, ChoixVoteEquipeActivity.class);
-                    intent.putExtra("jouteRendu", jouteRendu);
-                    intent.putExtra("numeroMatch", numeroMatch);
-                    startActivity(intent);
+                        Intent intent = new Intent(this, ChoixVoteEquipeActivity.class);
+                        intent.putExtra("jouteRendu", Integer.parseInt(jouteRendu));
+                        intent.putExtra("numeroMatch", Integer.parseInt(numeroMatch));
+                        startActivity(intent);
 
-                } else if (commande.equals("")) { // TODO À suivre ...
-                    //
+                    } else if (commande.equals("")) { // TODO À suivre ...
+                        //
+                    }
                 }
 
             });
