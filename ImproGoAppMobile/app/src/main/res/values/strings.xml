@@ -9,8 +9,6 @@
     <string name="str_Attente_2">Vous pouvez profiter pour regarder la scène.</string>
 
     <!-- ConnexionSalle -->
-    <string name="str_CS_erreur">Le PIN, l\'adresse IP ou le numéro de port est invalide ou il y a
-         un problème de connexion.</string>
     <string name="str_CS_ph_nom">Nom d\'utilisateur</string>
     <string name="str_CS_ph_pin">Numéro du PIN</string>
     <string name="str_CS_ph_adIp_port">Adresse IP:port</string>

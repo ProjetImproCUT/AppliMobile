@@ -2,6 +2,13 @@ package com.example.improgoappmobile.utils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -16,33 +23,55 @@ public final class Donnee {
     private String pin;
     private InfoEquipe[] equipes;
 
-    private Donnee(String utilisateur, String adresseIP, String port, String pin) throws URISyntaxException {
-        this.utilisateur = utilisateur;
-        this.pin = pin;
+    private Donnee() {
+
+        utilisateur = "";
+        pin = "";
         equipes = new InfoEquipe[2];
-        connexionWebSocket = new MyWebSocketClient(new URI("ws://" + adresseIP + ":" + port));
-                                                                // ^- adresse IP Serveur WebSocket
-        connexionWebSocket.connect();
 
         initialiserAPIService();
-    }
 
-    public static void setInstance(String utilisateur, String adresseIP, String port, String pin)
-            throws URISyntaxException {
-        if (instance == null) {
-            instance = new Donnee(utilisateur, adresseIP, port, pin);
-        }
     }
 
     public static Donnee getInstance() {
-        if (instance != null) {
-            return instance;
+        if (instance == null) {
+            instance = new Donnee();
         }
-        return null;
+        return instance;
     }
 
     public static void supprimerInstance() {
         instance = null;
+    }
+
+    public void initialisation(String utilisateur, String adresseIP, String port, String pin)
+            throws URISyntaxException, InterruptedException {
+        this.utilisateur = utilisateur;
+        this.pin = pin;
+        connexionWebSocket = null;
+        connexionWebSocket = new MyWebSocketClient(new URI("ws://" + adresseIP + ":" + port));
+        // ^- adresse IP Serveur WebSocket
+
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<Void> future = executorService.submit(() -> {
+            try {
+                connexionWebSocket.connectBlocking();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
+
+        try {
+            future.get(10, TimeUnit.SECONDS);
+        } catch (TimeoutException e) {
+            System.out.println("La tâche a pris trop de temps et n'a pas pu se terminer.");
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            executorService.shutdown();
+        }
+
     }
 
     public void ajouterEquipe(String nom, String couleur, String lienLogo) {
