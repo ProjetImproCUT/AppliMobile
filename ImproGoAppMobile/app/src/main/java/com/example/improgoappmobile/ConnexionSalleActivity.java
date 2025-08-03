@@ -1,10 +1,12 @@
 package com.example.improgoappmobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,9 +65,14 @@ public class ConnexionSalleActivity extends AppCompatActivity {
 
             if (verificationValeur()) {
 
+                Toast.makeText(ConnexionSalleActivity.this, "Veuillez patienter un petit moment ...",
+                        Toast.LENGTH_SHORT).show();
+
                 try {
 
                     donnee.initialisation(nomStr, addIpStr, portStr, pinStr);
+                    donnee.ajouterEquipe("Team A", "FFDE59", "");
+                    donnee.ajouterEquipe("Team B", "0CC0DF", "");
                     client = donnee.getConnexionWebSocket();
 
                     if (client.isOpen()) {
@@ -77,6 +84,9 @@ public class ConnexionSalleActivity extends AppCompatActivity {
                                         "\"utilisateur\":\"%s\", \"pin\":\"%s\", \"addIpPort\":\"%s\"}",
                                 nomStr, pinStr, addIpPortStr);
                         client.send(mess);
+
+                        Intent intentVersAttente = new Intent(this, AttenteActivity.class);
+                        startActivity(intentVersAttente);
 
                         client.setMessageListener((message -> {
                             Gson gson = new Gson();
