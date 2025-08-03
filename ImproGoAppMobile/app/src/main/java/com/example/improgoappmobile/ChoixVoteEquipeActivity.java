@@ -1,9 +1,10 @@
 package com.example.improgoappmobile;
 
+import static com.example.improgoappmobile.utils.VoteCommun.createGradientBackground;
+import static com.example.improgoappmobile.utils.VoteCommun.setBackgroundOfImageButton;
+
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -51,14 +52,14 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         int jouteRendu = intent.getIntExtra("jouteRendu", 0);
         int numeroMatch = intent.getIntExtra("numeroMatch", 0);
 
-        view = findViewById(R.id.CEE_page);
+        view = findViewById(R.id.CVE_page);
 
         // Couleur équipe
         // jaune : FFDE59  bleu : 0CC0DF
         // vert : 7FD858   mauve : CB6CE4
 
         // Fait le dégradé dans le fond du View
-        createGradientBackground();
+        createGradientBackground(view);
 
         Intent intentVersAttente = new Intent(this, AttenteActivity.class);
 
@@ -76,7 +77,7 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
             startActivity(intentVersAttente);
         });
 
-        setBackgroundOfImageButton();
+        setBackgroundOfImageButton(btnEquipe1, btnEquipe2);
 
         client.setMessageListener((message) -> {
 
@@ -93,46 +94,11 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
 
         });
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.CEE_page), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.CVE_page), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
-
-    private void createGradientBackground() {
-
-        try {
-
-            int[] colors = new int[2];
-            colors[0] = Integer.parseUnsignedInt("FF" + donnee.getEquipe2().getCouleur(), 16);
-            colors[1] = Integer.parseUnsignedInt("FF" + donnee.getEquipe1().getCouleur(), 16);
-
-            GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
-                    colors);
-            gradientDrawable.setCornerRadius(0.0f);
-            view.setBackground(gradientDrawable);
-
-        } catch (NumberFormatException e) {
-            Log.i("Erreur", "Les couleurs pour le dégradé n'ont pas fonctionné.");
-        }
-
-    }
-
-    private void setBackgroundOfImageButton() {
-
-        try {
-
-            int color1 = Integer.parseUnsignedInt("3F" + donnee.getEquipe1().getCouleur(), 16);
-            int color2 = Integer.parseUnsignedInt("3F" + donnee.getEquipe2().getCouleur(), 16);
-
-            btnEquipe1.setBackgroundColor(color1);
-            btnEquipe2.setBackgroundColor(color2);
-
-        } catch (NumberFormatException e) {
-            Log.i("Erreur", "Les couleurs pour les équipes n'ont pas fonctionné.");
-        }
-
     }
 
     private void envoyerVote(int matchId, int jouteId, String equipe) {
