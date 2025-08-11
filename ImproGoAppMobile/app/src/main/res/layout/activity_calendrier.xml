@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ED1A1A1A"
+    tools:context=".CalendrierActivity">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_Cal_1"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/t_message"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="182dp" />
+
+    <TextView
+        android:id="@+id/t_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="#DF2935"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/listeCalendrier"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:layout_editor_absoluteX="161dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listeCalendrier"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:background="#ED373636"
+        app:layout_constraintBottom_toTopOf="@+id/b_retourC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t_message" />
+
+    <Button
+        android:id="@+id/b_retourC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F7D09103"
+        android:text="@string/str_CIE_bRetour"
+        android:textColor="#0F0202"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listeCalendrier" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

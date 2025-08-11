@@ -9,13 +9,13 @@ public class VoteCommun {
 
     private static Donnee donnee = Donnee.getInstance();
 
-    public static void createGradientBackground(View view) {
+    public static void createGradientBackground(View view, String couleurHaut, String couleurBas) {
 
         try {
 
             int[] colors = new int[2];
-            colors[0] = Integer.parseUnsignedInt("FF" + donnee.getEquipe2().getCouleur(), 16);
-            colors[1] = Integer.parseUnsignedInt("FF" + donnee.getEquipe1().getCouleur(), 16);
+            colors[0] = Integer.parseUnsignedInt("FF" + couleurHaut, 16);
+            colors[1] = Integer.parseUnsignedInt("FF" + couleurBas, 16);
 
             GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
                     colors);

@@ -59,7 +59,7 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         // vert : 7FD858   mauve : CB6CE4
 
         // Fait le dégradé dans le fond du View
-        createGradientBackground(view);
+        createGradientBackground(view, donnee.getEquipe2().getCouleur(), donnee.getEquipe1().getCouleur());
 
         Intent intentVersAttente = new Intent(this, AttenteActivity.class);
 

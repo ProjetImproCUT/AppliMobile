@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         bCalendrier = findViewById(R.id.b_calendrier);
         bCalendrier.setOnClickListener((event) -> {
-            /*Intent intent = new Intent(this, AttenteActivity.class);
-            startActivity(intent);*/
+            Intent intent = new Intent(this, CalendrierActivity.class);
+            startActivity(intent);
         });
 
         bParticiper = findViewById(R.id.b_participer);

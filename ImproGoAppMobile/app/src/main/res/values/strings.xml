@@ -11,6 +11,9 @@
     <string name="str_CIE_bChoixEtoile">Mon étoile</string>
     <string name="str_CIE_bRetour">Retour</string>
 
+    <!-- Pour Calendrier -->
+    <string name="str_Cal_1">Calendrier</string>
+
     <!-- Pour Attente -->
     <string name="str_Attente_1">Veuillez patienter</string>
     <string name="str_Attente_2">Vous pouvez profiter pour regarder la scène.</string>

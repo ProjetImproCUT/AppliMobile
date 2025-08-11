@@ -11,4 +11,9 @@ public interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("vote.php")
     Call<ResponseBody> enregistrerVote(@Body VoteRequest voteRequest);
+
+    @Headers("Content-Type: application/json")
+    @GET("calendrier_select.php")
+    Call<ResponseBody> getCalendrier();
+
 }

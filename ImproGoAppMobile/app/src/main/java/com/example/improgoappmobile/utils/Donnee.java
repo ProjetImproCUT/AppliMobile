@@ -109,7 +109,7 @@ public final class Donnee {
 
     private void initialiserAPIService() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://voteimpro-afg6c3atf4a6cwcr.canadacentral-01.azurewebsites.net/") // ← adapte l’URL
+                .baseUrl("https://improgo-chfshsc9ahc2c3gw.canadacentral-01.azurewebsites.net/") // ← adapte l’URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
