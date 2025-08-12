@@ -5,6 +5,7 @@ import static com.example.improgoappmobile.utils.VoteCommun.setBackgroundOfImage
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -15,22 +16,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.improgoappmobile.utils.ApiService;
 import com.example.improgoappmobile.utils.Donnee;
 import com.example.improgoappmobile.utils.MyWebSocketClient;
-import com.example.improgoappmobile.utils.VoteRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.Map;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class ChoixVoteEquipeActivity extends AppCompatActivity {
+
+    private static final String TAG = "VOTE";
 
     private View view;
     private ImageButton btnEquipe1;
@@ -38,6 +37,40 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
 
     private Donnee donnee;
     private MyWebSocketClient client;
+
+    private int jouteRendu;
+    private int numeroMatch;
+
+    private boolean clickedOnce = false; // debounce
+
+    // Listen for "finVote" while this screen is visible (e.g., timer expired)
+    private final MyWebSocketClient.MessageListener socketListener = (message) -> {
+        try {
+            if (message == null || message.isEmpty()) return;
+            char first = message.charAt(0);
+            if (first != '{' && first != '[') return; // ignore non-JSON frames
+
+            Gson gson = new Gson();
+            Type type = new TypeToken<Map<String, Object>>() {}.getType();
+            Map<String, Object> map = gson.fromJson(message, type);
+
+            Object cmdObj = map.get("commande");
+            if (!(cmdObj instanceof String)) return;
+            String commande = (String) cmdObj;
+
+            if ("finVote".equals(commande)) {
+                runOnUiThread(() -> {
+                    if (!isFinishing()) {
+                        Log.d(TAG, "Received finVote -> returning to AttenteActivity");
+                        startActivity(new Intent(this, AttenteActivity.class));
+                        finish();
+                    }
+                });
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Socket parse error: " + message, e);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,50 +82,46 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         client = donnee.getConnexionWebSocket();
 
         Intent intent = getIntent();
-        int jouteRendu = intent.getIntExtra("jouteRendu", 0);
-        int numeroMatch = intent.getIntExtra("numeroMatch", 0);
+        jouteRendu = intent.getIntExtra("jouteRendu", -1);
+        numeroMatch = intent.getIntExtra("numeroMatch", -1);
+        Log.d(TAG, "Entering ChoixVoteEquipeActivity: jouteRendu=" + jouteRendu + ", numeroMatch=" + numeroMatch);
+
+        if (jouteRendu <= 0 || numeroMatch <= 0) {
+            Log.e(TAG, "Refusing to send vote with invalid params: joute=" + jouteRendu + ", match=" + numeroMatch);
+            Toast.makeText(this, "Paramètres de vote invalides (round/match)", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         view = findViewById(R.id.CVE_page);
 
-        // Couleur équipe
-        // jaune : FFDE59  bleu : 0CC0DF
-        // vert : 7FD858   mauve : CB6CE4
-
-        // Fait le dégradé dans le fond du View
+        // Dégradé: équipe2 -> équipe1
         createGradientBackground(view, donnee.getEquipe2().getCouleur(), donnee.getEquipe1().getCouleur());
 
-        Intent intentVersAttente = new Intent(this, AttenteActivity.class);
+        Intent toWait = new Intent(this, AttenteActivity.class);
 
         btnEquipe1 = findViewById(R.id.b_equ1);
         btnEquipe1.setImageResource(R.drawable.logojaune);
-        btnEquipe1.setOnClickListener((view) -> {
-            envoyerVote(numeroMatch, jouteRendu, donnee.getEquipe1().getNom());
-            startActivity(intentVersAttente);
+        btnEquipe1.setOnClickListener(v -> {
+            if (clickedOnce) return;
+            clickedOnce = true;
+            Log.d(TAG, "Sending vote: match=" + numeroMatch + ", joute=" + jouteRendu + ", equipe=" + donnee.getEquipe1().getNom());
+            envoyerVoteWS(numeroMatch, jouteRendu, donnee.getEquipe1().getNom());
+            startActivity(toWait);
+            finish();
         });
 
         btnEquipe2 = findViewById(R.id.b_equ2);
         btnEquipe2.setImageResource(R.drawable.logobleu);
-        btnEquipe2.setOnClickListener((view) -> {
-            envoyerVote(numeroMatch, jouteRendu, donnee.getEquipe2().getNom());
-            startActivity(intentVersAttente);
+        btnEquipe2.setOnClickListener(v -> {
+            if (clickedOnce) return;
+            clickedOnce = true;
+            Log.d(TAG, "Sending vote: match=" + numeroMatch + ", joute=" + jouteRendu + ", equipe=" + donnee.getEquipe2().getNom());
+            envoyerVoteWS(numeroMatch, jouteRendu, donnee.getEquipe2().getNom());
+            startActivity(toWait);
+            finish();
         });
 
         setBackgroundOfImageButton(btnEquipe1, btnEquipe2);
-
-        client.setMessageListener((message) -> {
-
-            Gson gson = new Gson();
-            Type type = new TypeToken<Map<String, String>>() {}.getType();
-            Map<String, String> map = gson.fromJson(message, type);
-
-            String commande = map.get("commande");
-            if (commande != null) {
-                if (commande.equals("finVote")) {
-                    startActivity(intentVersAttente);
-                }
-            }
-
-        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.CVE_page), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -101,27 +130,41 @@ public class ChoixVoteEquipeActivity extends AppCompatActivity {
         });
     }
 
-    private void envoyerVote(int matchId, int jouteId, String equipe) {
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (client != null) client.addMessageListener(socketListener);
+    }
 
-        VoteRequest vote = new VoteRequest(matchId, jouteId, equipe);
+    @Override
+    protected void onStop() {
+        if (client != null) client.removeMessageListener(socketListener);
+        super.onStop();
+    }
 
-        ApiService api = donnee.getApi();
-        Call<ResponseBody> call = api.enregistrerVote(vote);
+    /** Send the vote via WebSocket (Node.js server will handle it). */
+    private void envoyerVoteWS(int matchId, int jouteId, String equipe) {
+        if (client == null || !client.isOpen()) {
+            Toast.makeText(this, "Socket non connecté", Toast.LENGTH_SHORT).show();
+            clickedOnce = false; // allow retry
+            return;
+        }
+        try {
+            JSONObject obj = new JSONObject();
+            obj.put("commande", "enregistrerVote"); // <-- make sure your Node server listens for this
+            obj.put("numeroMatch", matchId);
+            obj.put("jouteRendu", jouteId);
+            obj.put("equipe", equipe);
 
-        call.enqueue(new Callback<>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(ChoixVoteEquipeActivity.this, "Vote enregistré!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ChoixVoteEquipeActivity.this, "Erreur côté serveur", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(ChoixVoteEquipeActivity.this, "Erreur de connexion", Toast.LENGTH_SHORT).show();
-            }
-        });
+            String json = obj.toString();
+            Log.d(TAG, "WS SEND " + json);
+            client.send(json);
+            // Optionally toast here; better to toast on ack from server
+            // Toast.makeText(this, "Vote envoyé", Toast.LENGTH_SHORT).show();
+        } catch (JSONException e) {
+            Log.e(TAG, "JSON build error", e);
+            Toast.makeText(this, "Erreur envoi vote", Toast.LENGTH_SHORT).show();
+            clickedOnce = false; // allow retry
+        }
     }
 }

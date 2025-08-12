@@ -15,12 +15,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.improgoappmobile.utils.Donnee;
 import com.example.improgoappmobile.utils.MyWebSocketClient;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.net.URISyntaxException;
-import java.util.Map;
 
 public class ConnexionSalleActivity extends AppCompatActivity {
 
@@ -37,9 +33,9 @@ public class ConnexionSalleActivity extends AppCompatActivity {
     private String nomStr;
     private String pinStr;
 
-    private String addIpStr = SERVER_HOST;
-    private String portStr = String.valueOf(SERVER_PORT);
-    private String addIpPortStr = SERVER_HOST + ":" + SERVER_PORT;
+    private final String addIpStr = SERVER_HOST;
+    private final String portStr = String.valueOf(SERVER_PORT);
+    private final String addIpPortStr = SERVER_HOST + ":" + SERVER_PORT;
 
     private Donnee donnee;
     private MyWebSocketClient client;
@@ -70,7 +66,7 @@ public class ConnexionSalleActivity extends AppCompatActivity {
                 Toast.makeText(this, "Veuillez patienter un petit moment ...", Toast.LENGTH_SHORT).show();
 
                 try {
-                    // Initialise with fixed host/port
+                    // Initialise with fixed host/port (Donnee should create/connect the single socket)
                     donnee.initialisation(nomStr, addIpStr, portStr, pinStr);
 
                     // Pré-charger 2 équipes (comme avant)
@@ -79,29 +75,19 @@ public class ConnexionSalleActivity extends AppCompatActivity {
 
                     client = donnee.getConnexionWebSocket();
 
-                    if (client.isOpen()) {
+                    if (client != null && client.isOpen()) {
                         messageErreur.setText("");
                         messageErreur.setVisibility(TextView.INVISIBLE);
 
+                        // Notify server you’re joining
                         String mess = String.format(
                                 "{\"commande\":\"demandeDeRejoindre\",\"utilisateur\":\"%s\",\"pin\":\"%s\",\"addIpPort\":\"%s\"}",
                                 nomStr, pinStr, addIpPortStr
                         );
                         client.send(mess);
 
+                        // Go to waiting screen; it will attach its own listener in onStart()
                         startActivity(new Intent(this, AttenteActivity.class));
-
-                        // Listen to server messages
-                        client.setMessageListener(message -> {
-                            Gson gson = new Gson();
-                            Type type = new TypeToken<Map<String, String>>(){}.getType();
-                            Map<String, String> map = gson.fromJson(message, type);
-
-                            String commande = map.get("commande");
-                            if ("demandeAccepter".equals(commande)) {
-                                // TODO: handle success (charger données / changer d'activité)
-                            }
-                        });
 
                     } else {
                         appendErr("Il est impossible de se connecter au serveur. " +
