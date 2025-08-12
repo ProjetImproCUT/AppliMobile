@@ -1,0 +1,191 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.improgoappmobile"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:6:5-78
+12-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+13-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:7:5-75
+13-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:7:22-73
+14
+15    <permission
+15-->[androidx.core:core:1.13.0] C:\Users\chris\.gradle\caches\8.13\transforms\e6caaea53f08d0e4cb302c1c10f6ab42\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+16        android:name="com.example.improgoappmobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+16-->[androidx.core:core:1.13.0] C:\Users\chris\.gradle\caches\8.13\transforms\e6caaea53f08d0e4cb302c1c10f6ab42\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+17        android:protectionLevel="signature" />
+17-->[androidx.core:core:1.13.0] C:\Users\chris\.gradle\caches\8.13\transforms\e6caaea53f08d0e4cb302c1c10f6ab42\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+18
+19    <uses-permission android:name="com.example.improgoappmobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+19-->[androidx.core:core:1.13.0] C:\Users\chris\.gradle\caches\8.13\transforms\e6caaea53f08d0e4cb302c1c10f6ab42\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+19-->[androidx.core:core:1.13.0] C:\Users\chris\.gradle\caches\8.13\transforms\e6caaea53f08d0e4cb302c1c10f6ab42\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+20
+21    <application
+21-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:9:5-51:19
+22        android:allowBackup="true"
+22-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:11:9-35
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.13.0] C:\Users\chris\.gradle\caches\8.13\transforms\e6caaea53f08d0e4cb302c1c10f6ab42\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+24        android:dataExtractionRules="@xml/data_extraction_rules"
+24-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:12:9-65
+25        android:debuggable="true"
+26        android:extractNativeLibs="false"
+27        android:fullBackupContent="@xml/backup_rules"
+27-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:13:9-54
+28        android:icon="@mipmap/ic_launcher"
+28-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:14:9-43
+29        android:label="@string/app_name"
+29-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:15:9-41
+30        android:roundIcon="@mipmap/ic_launcher_round"
+30-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:16:9-54
+31        android:supportsRtl="true"
+31-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:17:9-35
+32        android:testOnly="true"
+33        android:theme="@style/Theme.ImproGoAppMobile"
+33-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:18:9-54
+34        android:usesCleartextTraffic="true" >
+34-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:10:9-44
+35        <activity
+35-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:20:9-22:40
+36            android:name="com.example.improgoappmobile.CalendrierActivity"
+36-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:21:13-47
+37            android:exported="false" />
+37-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:22:13-37
+38        <activity
+38-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:23:9-25:40
+39            android:name="com.example.improgoappmobile.ChoixInterpreteEtoileActivity"
+39-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:24:13-58
+40            android:exported="false" />
+40-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:25:13-37
+41        <activity
+41-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:26:9-28:40
+42            android:name="com.example.improgoappmobile.ChoixVoteEquipeEtoileActivity"
+42-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:27:13-58
+43            android:exported="false" />
+43-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:28:13-37
+44        <activity
+44-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:29:9-31:40
+45            android:name="com.example.improgoappmobile.ConnexionSalleActivity"
+45-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:30:13-51
+46            android:exported="false" />
+46-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:31:13-37
+47        <activity
+47-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:32:9-34:40
+48            android:name="com.example.improgoappmobile.AttenteActivity"
+48-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:33:13-44
+49            android:exported="false" />
+49-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:34:13-37
+50        <activity
+50-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:35:9-37:40
+51            android:name="com.example.improgoappmobile.ChoixVoteEquipeActivity"
+51-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:36:13-52
+52            android:exported="false" />
+52-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:37:13-37
+53        <activity
+53-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:38:9-46:20
+54            android:name="com.example.improgoappmobile.MainActivity"
+54-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:39:13-41
+55            android:exported="true" >
+55-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:40:13-36
+56            <intent-filter>
+56-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:41:13-45:29
+57                <action android:name="android.intent.action.MAIN" />
+57-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:42:17-69
+57-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:42:25-66
+58
+59                <category android:name="android.intent.category.LAUNCHER" />
+59-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:44:17-77
+59-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:44:27-74
+60            </intent-filter>
+61        </activity>
+62
+63        <meta-data
+63-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:48:9-50:57
+64            android:name="preloaded_fonts"
+64-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:49:13-43
+65            android:resource="@array/preloaded_fonts" />
+65-->C:\Users\chris\Git\perso\ProjetImproCUT\AppliMobile\ImproGoAppMobile\app\src\main\AndroidManifest.xml:50:13-54
+66
+67        <provider
+67-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chris\.gradle\caches\8.13\transforms\bad9e311d17f0a1762b4e71d208021d9\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+68            android:name="androidx.startup.InitializationProvider"
+68-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chris\.gradle\caches\8.13\transforms\bad9e311d17f0a1762b4e71d208021d9\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+69            android:authorities="com.example.improgoappmobile.androidx-startup"
+69-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chris\.gradle\caches\8.13\transforms\bad9e311d17f0a1762b4e71d208021d9\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+70            android:exported="false" >
+70-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chris\.gradle\caches\8.13\transforms\bad9e311d17f0a1762b4e71d208021d9\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+71            <meta-data
+71-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chris\.gradle\caches\8.13\transforms\bad9e311d17f0a1762b4e71d208021d9\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+72                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+72-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chris\.gradle\caches\8.13\transforms\bad9e311d17f0a1762b4e71d208021d9\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+73                android:value="androidx.startup" />
+73-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chris\.gradle\caches\8.13\transforms\bad9e311d17f0a1762b4e71d208021d9\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+74            <meta-data
+74-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\chris\.gradle\caches\8.13\transforms\47fa8d3a32c8dcacdbe1500609df7233\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+75                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+75-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\chris\.gradle\caches\8.13\transforms\47fa8d3a32c8dcacdbe1500609df7233\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+76                android:value="androidx.startup" />
+76-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\chris\.gradle\caches\8.13\transforms\47fa8d3a32c8dcacdbe1500609df7233\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+77            <meta-data
+77-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+78                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+78-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+79                android:value="androidx.startup" />
+79-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+80            <meta-data
+80-->[com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\chris\.gradle\caches\8.13\transforms\2fa67512f7df89bc1999d8f1a11c9e82\transformed\okhttp-release\AndroidManifest.xml:16:13-18:52
+81                android:name="okhttp3.internal.platform.PlatformInitializer"
+81-->[com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\chris\.gradle\caches\8.13\transforms\2fa67512f7df89bc1999d8f1a11c9e82\transformed\okhttp-release\AndroidManifest.xml:17:17-77
+82                android:value="androidx.startup" />
+82-->[com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\chris\.gradle\caches\8.13\transforms\2fa67512f7df89bc1999d8f1a11c9e82\transformed\okhttp-release\AndroidManifest.xml:18:17-49
+83        </provider>
+84
+85        <receiver
+85-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+86            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+86-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+87            android:directBootAware="false"
+87-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+88            android:enabled="true"
+88-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+89            android:exported="true"
+89-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+90            android:permission="android.permission.DUMP" >
+90-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+91            <intent-filter>
+91-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+92                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+92-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+92-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+93            </intent-filter>
+94            <intent-filter>
+94-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+95                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+95-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+95-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+96            </intent-filter>
+97            <intent-filter>
+97-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+98                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+98-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+98-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+99            </intent-filter>
+100            <intent-filter>
+100-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+101                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+101-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+101-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\chris\.gradle\caches\8.13\transforms\5951abe3d0d9e6b2d02976ac8c5c4eaf\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+102            </intent-filter>
+103        </receiver>
+104    </application>
+105
+106</manifest>

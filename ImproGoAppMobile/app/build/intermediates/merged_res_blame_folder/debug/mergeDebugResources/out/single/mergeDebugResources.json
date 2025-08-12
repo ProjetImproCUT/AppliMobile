@@ -1,0 +1,138 @@
+[
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable_fleche_d.png.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/drawable/fleche_d.png"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/layout_activity_choix_vote_equipe.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/layout/activity_choix_vote_equipe.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/layout_activity_main.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/layout_interprete_layout.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/layout/interprete_layout.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable_logojaune.png.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/drawable/logojaune.png"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable_logomauve.png.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/drawable/logomauve.png"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/xml_backup_rules.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable_fleche_g.png.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/drawable/fleche_g.png"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable_logobleu.png.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/drawable/logobleu.png"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/font_open_sans_semibold.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/font/open_sans_semibold.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable_logo.png.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/drawable/logo.png"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/layout_activity_attente.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/layout/activity_attente.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable_logovert.png.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/drawable/logovert.png"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/layout_calendrier_layout.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/layout/calendrier_layout.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/layout_activity_choix_vote_equipe_etoile.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/layout/activity_choix_vote_equipe_etoile.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable_none.png.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/drawable/none.png"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.improgoappmobile.app-pngs-29:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/layout_activity_calendrier.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/layout/activity_calendrier.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/layout_activity_choix_interprete_etoile.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/layout/activity_choix_interprete_etoile.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/layout_activity_connexion_salle.xml.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/layout/activity_connexion_salle.xml"
+    },
+    {
+        "merged": "com.example.improgoappmobile.app-debug-33:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.improgoappmobile.app-main-35:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    }
+]
