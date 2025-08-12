@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ImproGoAppMobile</string>
+
+    <!-- Pour ChoixVoteEquipe -->
+    <string name="str_CVE_1">Quelle équipe avez-vous préféré ?</string>
+
+    <!-- Pour ChoixVoteEquipeEtoile -->
+    <string name="str_CVEE_1">Quel est votre équipe étoile du match ?</string>
+
+    <!-- Pour ChoixInterpreteEtoile -->
+    <string name="str_CIE_bChoixEtoile">Mon étoile</string>
+    <string name="str_CIE_bRetour">Retour</string>
+
+    <!-- Pour Calendrier -->
+    <string name="str_Cal_1">Calendrier</string>
+
+    <!-- Pour Attente -->
+    <string name="str_Attente_1">Veuillez patienter</string>
+    <string name="str_Attente_2">Vous pouvez profiter pour regarder la scène.</string>
+
+    <!-- ConnexionSalle -->
+    <string name="str_CS_ph_nom">Nom d\'utilisateur</string>
+    <string name="str_CS_ph_pin">Numéro du PIN</string>
+    <string name="str_CS_ph_adIp_port">Adresse IP:port</string>
+    <string name="str_CS_bConfirmer">Confirmer</string>
+
+    <!-- Pour Main -->
+    <string name="str_Main_bCalendrier">Voir Calendrier</string>
+    <string name="str_Main_bParticiper">Participer Événement</string>
+</resources>
